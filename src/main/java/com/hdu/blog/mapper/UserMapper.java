@@ -1,0 +1,15 @@
+package com.hdu.blog.mapper;
+
+import com.hdu.blog.entity.User;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+
+/**
+ * Create By weisan on 2020/10/19.
+ */
+@Mapper
+public interface UserMapper {
+
+    List<User> listUser();
+}
