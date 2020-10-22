@@ -3,14 +3,19 @@ package com.hdu.blog.entity;
 import lombok.Data;
 import lombok.ToString;
 
+import java.util.Date;
+
 /**
  * Create By weisan on 2020/10/19.
  */
 @Data
 @ToString
 public class User {
-        private String id;
+        private int user_id;
         private String username;
         private String password;
-        private String realname;
+        private String email;
+        private String phone;
+        private Date create_time;
+        private Date update_time;
 }

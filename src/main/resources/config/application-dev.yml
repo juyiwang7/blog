@@ -5,9 +5,9 @@ server:
 
 spring:
   datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3306/shenben?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username: array
+    password: array@hdu
+    url: jdbc:mysql://10.1.21.152:3306/blog?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name:  com.mysql.cj.jdbc.Driver
   web:
     loginurl: http://localhost:${server.port}/swagger-ui.html
