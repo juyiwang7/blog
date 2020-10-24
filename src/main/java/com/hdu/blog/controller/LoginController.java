@@ -4,6 +4,7 @@ import com.hdu.blog.core.domain.ResultVO;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,10 +19,5 @@ public class LoginController {
         token.put("Oauth-Token","9c5b89bd-ecb0-4c2c-8aae-9653d0e15e04");
         return ResultVO.ok("成功",token);
     }
-    @GetMapping("/users/currentUser")
-    @ApiOperation(value = "登录接口！")
-    public ResultVO currentUser(@RequestBody Map<String,String> map){
 
-        return null;
-    }
 }
