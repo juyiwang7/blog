@@ -11,7 +11,7 @@ public class ResultVO implements Serializable {
 
     private String msg;
 
-    private Object result;
+    private Object data;
 
     public ResultVO() {
 
@@ -26,19 +26,19 @@ public class ResultVO implements Serializable {
         this.msg = msg;
     }
 
-    public ResultVO(Integer code, Object result) {
+    public ResultVO(Integer code, Object data) {
         this.code = code;
-        this.result = result;
+        this.data = data;
     }
 
-    public ResultVO(Integer code, String msg, Object result) {
+    public ResultVO(Integer code, String msg, Object data) {
         this.code = code;
         this.msg = msg;
-        this.result = result;
+        this.data = data;
     }
 
-    public ResultVO(Object result) {
-        this.result = result;
+    public ResultVO(Object data) {
+        this.data = data;
     }
 
     public static ResultVO error() {
@@ -57,11 +57,11 @@ public class ResultVO implements Serializable {
         return new ResultVO(CODE, msg);
     }
 
-    public static ResultVO ok(Object result) {
-        return new ResultVO(CODE, result);
+    public static ResultVO ok(Object data) {
+        return new ResultVO(CODE, data);
     }
-    public static ResultVO ok(String msg, Object result) {
-        return new ResultVO(CODE, msg, result);
+    public static ResultVO ok(String msg, Object data) {
+        return new ResultVO(CODE, msg, data);
     }
     public static ResultVO ok() {
         return new ResultVO(CODE);
@@ -84,17 +84,17 @@ public class ResultVO implements Serializable {
         this.msg = msg;
     }
 
-    public Object getResult() {
-        return result;
+    public Object getData() {
+        return data;
     }
 
-    public void setResult(Object result) {
-        this.result = result;
+    public void setData(Object data) {
+        this.data = data;
     }
 
     @Override
     public String toString() {
         // Create a copy, don't share the array
-        return "code:"+this.getCode()+"msg:"+this.getMsg()+"result:"+this.getResult();
+        return "code:"+this.getCode()+"msg:"+this.getMsg()+"data:"+this.getData();
     }
 }
