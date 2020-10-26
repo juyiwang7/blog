@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CrosConfig implements WebMvcConfigurer {
 
+
     //重写方法
     @Override
     public void addCorsMappings(CorsRegistry registry) {
