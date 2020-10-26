@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hdu.blog.mapper.ArticleMapper">
-    <select id="listArticle" resultType="com.hdu.blog.entity.Article">
-    select * from article order by article_time desc
+    <select id="listArticle" resultMap="articleMap">
+        select * from article,category
+        where article.category_id = category.category_id
+        order by article_time desc
   </select>
+    
+    <resultMap id="articleMap" type="Article">
+        <result property="article_id" column="article_id" />
+        <result property="article_title" column="article_title"/>
+        <result property="article_content" column="article_content"/>
+        <result property="article_time" column="article_time"/>
+        <result property="article_viewcount" column="article_viewcount"/>
+        <result property="article_commentcount" column="article_commentcount"/>
+        <result property="create_time" column="create_time"/>
+        <result property="update_time" column="update_time"/>
+<!--        User Category List<Tag> 用对象<association> 集合<collection>-->
+<!--        用户还不实现-->
+<!--        <association property="user" javaType="User">-->
+<!--            <result property="user_id" column="user_id"/>-->
+<!--            <result property="username" column="username"/>-->
+<!--            <result property="password" column="password"/>-->
+<!--            <result property="email" column="email"/>-->
+<!--            <result property="phone" column="phone"/>-->
+<!--            <result property="create_time" column="create_time"/>-->
+<!--            <result property="update_time" column="update_time"/>-->
+<!--        </association>-->
+        <association property="category" javaType="Category">
+            <result property="category_id" column="category_id"/>
+            <result property="category_name" column="category_name"/>
+            <result property="category_description" column="category_description"/>
+            <result property="create_time" column="create_time"/>
+            <result property="update_time" column="update_time"/>
+        </association>
+<!--        获取每个article的tag列表SQL怎么写，效率。还是单独写一个根据article_id查tag的SQL-->
+<!--        <collection property="tag" ofType="Tag">-->
+<!--            <result property="" column=""/>-->
+<!--        </collection>-->
+
+    </resultMap>
 </mapper>
