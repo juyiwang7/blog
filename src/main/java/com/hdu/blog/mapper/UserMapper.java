@@ -12,4 +12,5 @@ import java.util.List;
 public interface UserMapper {
 
     List<User> listUser();
+    User getUser(int id);
 }

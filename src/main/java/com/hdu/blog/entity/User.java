@@ -16,6 +16,6 @@ public class User {
         private String password;
         private String email;
         private String phone;
-        private Date create_time;
-        private Date update_time;
+        private Date createTime;
+        private Date updateTime;
 }

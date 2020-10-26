@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hdu.blog.mapper.CategoryMapper">
+    <select id="listCategory" resultType="com.hdu.blog.entity.Category">
+        select * from category
+    </select>
+
+    <select id="getCategory" parameterType="int" resultType="com.hdu.blog.entity.Category">
+        select category_id,category_name,category_description,user_id,create_time,update_time from category where category_id=#{id}
+    </select>
+</mapper>

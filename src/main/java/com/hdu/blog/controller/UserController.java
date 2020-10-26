@@ -29,6 +29,12 @@ public class UserController {
         return ResultVO.ok(users);
 
     }
+
+    @GetMapping("getUser")
+    public ResultVO getUser(int id){
+        User user = userService.getUser(id);
+        return ResultVO.ok(user);
+    }
     @CrossOrigin
     @GetMapping("/currentUser")
     @ApiOperation(value = "获取当前用户！")
