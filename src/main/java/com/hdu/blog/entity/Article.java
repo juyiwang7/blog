@@ -21,6 +21,7 @@ public class Article {
 //    private int user_id;//用对象
 
     private Category category;
+    private List<Tag> tag;
     private User user;
 //    private List<Tag> tag;
 }

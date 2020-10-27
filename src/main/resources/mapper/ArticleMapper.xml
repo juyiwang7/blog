@@ -2,8 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hdu.blog.mapper.ArticleMapper">
     <select id="listArticle" resultMap="articleMap">
-        select * from article,category
-        where article.category_id = category.category_id
+        select article.*,c.category_name,t.tag_name from article
+        inner join category c on article.category_id = c.category_id
+        inner join article_tag a on article.article_id = a.article_id
+        inner join tag t on a.tag_id = t.tag_id
         order by article_time desc
   </select>
     
@@ -35,9 +37,13 @@
             <result property="update_time" column="update_time"/>
         </association>
 <!--        获取每个article的tag列表SQL怎么写，效率。还是单独写一个根据article_id查tag的SQL-->
-<!--        <collection property="tag" ofType="Tag">-->
-<!--            <result property="" column=""/>-->
-<!--        </collection>-->
+        <collection property="tag" ofType="Tag">
+            <result property="tag_id" column="tag_id"/>
+            <result property="tag_name" column="tag_name"/>
+            <result property="user_id" column="user_id"/>
+            <result property="create_time" column="create_time"/>
+            <result property="update_time" column="update_time"/>
+        </collection>
 
     </resultMap>
 </mapper>
