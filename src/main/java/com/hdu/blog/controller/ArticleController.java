@@ -6,10 +6,7 @@ import com.hdu.blog.service.ArticleService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.MapBindingResult;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -35,5 +32,13 @@ public class ArticleController {
     @GetMapping("/new")
     public ResultVO listNewArticle(){
         return listArticle();
+    }
+
+
+    @GetMapping("/view/{article_id}")
+    @ApiOperation("查看指定文章")
+    public ResultVO getArticle(@PathVariable("article_id") int id){
+        Article article = articleService.getArticle(id);
+        return ResultVO.ok(article);
     }
 }
