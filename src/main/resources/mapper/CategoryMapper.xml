@@ -24,7 +24,8 @@
     </resultMap>
 
     <select id="listCategory" resultMap="categoryMap">
-        select * from category
+        select c.*,a.* from category c
+        inner join article a on c.category_id = a.category_id
     </select>
 
 <!--    获取指定分类和其下的文章-->
