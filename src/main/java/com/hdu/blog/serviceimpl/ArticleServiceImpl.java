@@ -20,4 +20,6 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     public Article getArticle(int id){return articleMapper.getArticle(id);}
+
+    public List<Article> getArticleByCategory(int id){return articleMapper.getArticleByCategory(id);}
 }

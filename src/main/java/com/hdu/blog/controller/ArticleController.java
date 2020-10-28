@@ -3,6 +3,7 @@ package com.hdu.blog.controller;
 import com.hdu.blog.core.domain.ResultVO;
 import com.hdu.blog.entity.Article;
 import com.hdu.blog.service.ArticleService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.MapBindingResult;
@@ -40,5 +41,12 @@ public class ArticleController {
     public ResultVO getArticle(@PathVariable("article_id") int id){
         Article article = articleService.getArticle(id);
         return ResultVO.ok(article);
+    }
+
+    @GetMapping("/category/{id}")
+    @ApiOperation("查看指定分类下的文章")
+    public ResultVO getArticlesByCategory(@PathVariable("id") int id){
+        List<Article> articles = articleService.getArticleByCategory(id);
+        return ResultVO.ok(articles);
     }
 }

@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hdu.blog.mapper.ArticleMapper">
 <!--    联合三表查询，查询category_name和tag_name-->
-
 <!--    获取全部文章-->
     <select id="listArticle" resultMap="articleMap">
         select article.*,c.*,t.* from article
@@ -19,6 +18,16 @@
         inner join article_tag a on article.article_id = a.article_id
         inner join tag t on a.tag_id = t.tag_id
         where article.article_id = #{id}
+    </select>
+
+
+<!--    获取指定分类下的文章-->
+    <select id="getArticleByCategory" resultMap="articleMap">
+        select article.*,c.*,t.* from article
+        inner join category c on article.category_id = c.category_id
+        inner join article_tag a on article.article_id = a.article_id
+        inner join tag t on a.tag_id = t.tag_id
+        where c.category_id = #{id}
     </select>
     
     <resultMap id="articleMap" type="Article">

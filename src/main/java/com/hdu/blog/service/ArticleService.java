@@ -7,4 +7,5 @@ import java.util.List;
 public interface ArticleService {
     List<Article> listArticle();
     Article getArticle(int id);
+    List<Article> getArticleByCategory(int id);
 }

@@ -1,6 +1,8 @@
 package com.hdu.blog.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.Date;
@@ -8,6 +10,8 @@ import java.util.List;
 
 @Data
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Article {
     private int article_id;
     private String article_title;

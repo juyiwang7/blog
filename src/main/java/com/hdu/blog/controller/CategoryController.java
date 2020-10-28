@@ -20,14 +20,15 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @GetMapping
+
+    @GetMapping("/detail")
     @ApiOperation(value = "查看所有分类")
     public ResultVO listCategory(){
         List<Category> categories = categoryService.listCategory();
         return ResultVO.ok(categories);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/detail/{id}")
     @ApiOperation(value = "查看指定分类")
     public ResultVO getCategory(@PathVariable("id") int id){
         Category cateogory = categoryService.getCategory(id);

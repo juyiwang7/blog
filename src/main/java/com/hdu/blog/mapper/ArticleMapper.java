@@ -9,4 +9,5 @@ import java.util.List;
 public interface ArticleMapper {
     List<Article> listArticle();
     Article getArticle(int id);
+    List<Article> getArticleByCategory(int id);
 }

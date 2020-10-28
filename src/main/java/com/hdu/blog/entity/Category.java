@@ -1,9 +1,12 @@
 package com.hdu.blog.entity;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import java.util.Date;
+import java.util.List;
 
 
 //        category_id	        类别id	        bigint unsigned
@@ -15,6 +18,8 @@ import java.util.Date;
 
 @Data
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Category {
     private int category_id;
     private String category_name;
@@ -22,4 +27,7 @@ public class Category {
     private User user;
     private Date create_time;
     private Date update_time;
+
+    //数据库中没有的字段，这里的含义是每个类别下的文章
+    private List<Article> articles;
 }
