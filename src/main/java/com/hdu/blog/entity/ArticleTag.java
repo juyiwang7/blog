@@ -1,12 +1,16 @@
 package com.hdu.blog.entity;
 
+import lombok.Data;
+import lombok.ToString;
+
 import java.util.Date;
 
 /**
  * @author cellphone
  * @create 2020-10-28 18:46
  */
-
+@Data
+@ToString
 public class ArticleTag {
     private int article_tag_id;
     private int article_id;
