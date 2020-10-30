@@ -23,4 +23,5 @@ public class CategoryServiceImpl implements CategoryService {
     public Category getCategory(int id) {
         return categoryMapper.getCategory(id);
     }
+
 }
