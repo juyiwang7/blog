@@ -49,4 +49,11 @@ public class ArticleController {
         List<Article> articles = articleService.getArticleByCategory(id);
         return ResultVO.ok(articles);
     }
+
+    @GetMapping("/tag/{id}")
+    @ApiOperation("查看指定tag下的文章")
+    public ResultVO getArticlesByTag(@PathVariable("id") int id){
+        List<Article> articles = articleService.getArticleByTag(id);
+        return ResultVO.ok(articles);
+    }
 }

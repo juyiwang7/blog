@@ -29,6 +29,15 @@
         inner join tag t on a.tag_id = t.tag_id
         where c.category_id = #{id}
     </select>
+
+<!--    获取指定tag下的文章-->
+    <select id="getArticleByTag" resultMap="articleMap">
+        select article.*,c.*,t.* from article
+        inner join category c on article.category_id = c.category_id
+        inner join article_tag a on article.article_id = a.article_id
+        inner join tag t on a.tag_id = t.tag_id
+        where t.tag_id = #{id}
+    </select>
     
     <resultMap id="articleMap" type="Article">
         <result property="article_id" column="article_id" />

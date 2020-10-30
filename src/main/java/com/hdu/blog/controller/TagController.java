@@ -18,14 +18,14 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
-    @GetMapping
+    @GetMapping("/detail")
     @ApiOperation(value = "查看所有标签")
     public ResultVO listTag(){
         List<Tag> tags = tagService.listTag();
         return ResultVO.ok(tags);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/detail/{id}")
     @ApiOperation(value = "查看指定标签")
     public ResultVO getTag(@PathVariable("id") int id){
         Tag tag = tagService.getTag(id);

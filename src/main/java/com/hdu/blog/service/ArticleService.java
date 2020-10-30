@@ -8,4 +8,5 @@ public interface ArticleService {
     List<Article> listArticle();
     Article getArticle(int id);
     List<Article> getArticleByCategory(int id);
+    List<Article> getArticleByTag(int id);
 }

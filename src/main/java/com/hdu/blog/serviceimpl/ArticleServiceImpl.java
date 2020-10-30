@@ -21,5 +21,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     public Article getArticle(int id){return articleMapper.getArticle(id);}
 
+    //根据指定的分类获取其下的文章
     public List<Article> getArticleByCategory(int id){return articleMapper.getArticleByCategory(id);}
+
+    //根据指定的tag获取其下的文章
+    public List<Article> getArticleByTag(int id){return articleMapper.getArticleByTag(id);}
 }
