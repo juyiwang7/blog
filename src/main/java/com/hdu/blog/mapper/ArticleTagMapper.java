@@ -11,5 +11,4 @@ import java.util.List;
  */
 public interface ArticleTagMapper {
     List<ArticleTag> listArticleTag();
-    List<Article> getArticleByTag(int tagID);
 }

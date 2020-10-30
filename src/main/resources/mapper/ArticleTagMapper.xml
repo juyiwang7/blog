@@ -6,7 +6,4 @@
         select * from article_tag
     </select>
 
-    <select id="getArticleByTag" parameterType="int" resultType="com.hdu.blog.entity.Article">
-        select * from article_tag where article_tag_id = #{id}
-    </select>
 </mapper>
