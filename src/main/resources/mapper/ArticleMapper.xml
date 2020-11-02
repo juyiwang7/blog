@@ -36,7 +36,10 @@
         inner join category c on article.category_id = c.category_id
         inner join article_tag a on article.article_id = a.article_id
         inner join tag t on a.tag_id = t.tag_id
-        where t.tag_id = #{id}
+        where article.article_id in (
+            select article_id from article_tag
+            where tag_id = #{id}
+        )
     </select>
     
     <resultMap id="articleMap" type="Article">

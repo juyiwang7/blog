@@ -27,11 +27,12 @@
         inner join tag t on at.tag_id = t.tag_id
     </select>
 
-    <!--    获取指定tag和其下的文章-->
-    <select id="getTag" parameterType="int" resultMap="ArticleTagMap">
-        select t.*,a.* from article_tag at
-        inner join article a on at.article_id = a.article_id
-        inner join tag t on at.tag_id = t.tag_id
-        where t.tag_id = #{id}
-    </select>
+    <!--    获取指定tag和其下的文章（废弃）-->
+
+<!--    <select id="getTag" parameterType="int" resultMap="ArticleTagMap">-->
+<!--        select t.*,a.* from article_tag at-->
+<!--        inner join article a on at.article_id = a.article_id-->
+<!--        inner join tag t on at.tag_id = t.tag_id-->
+<!--        where t.tag_id = #{id}-->
+<!--    </select>-->
 </mapper>
