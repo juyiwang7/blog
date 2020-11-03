@@ -8,7 +8,9 @@ import java.util.List;
 @Mapper
 public interface ArticleMapper {
     List<Article> listArticle();
+    List<Article> listHotArticle();
     Article getArticle(int id);
     List<Article> getArticleByCategory(int id);
     List<Article> getArticleByTag(int id);
+    void publishArticle(Article article);
 }

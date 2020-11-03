@@ -1,6 +1,7 @@
 package com.hdu.blog.controller;
 
 import com.hdu.blog.core.domain.ResultVO;
+import com.hdu.blog.entity.Category;
 import com.hdu.blog.entity.Tag;
 import com.hdu.blog.service.TagService;
 import io.swagger.annotations.ApiOperation;
@@ -17,6 +18,13 @@ import java.util.List;
 public class TagController {
     @Autowired
     private TagService tagService;
+
+    @GetMapping
+    @ApiOperation(value = "查看所有标签的基本信息")
+    public ResultVO getAllCategorys(){
+        List<Tag> allTags = tagService.getAllTags();
+        return ResultVO.ok(allTags);
+    }
 
     @GetMapping("/detail")
     @ApiOperation(value = "查看所有标签")

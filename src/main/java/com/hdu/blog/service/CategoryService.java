@@ -10,4 +10,5 @@ public interface CategoryService {
     List<Category> listCategory();
 //    Category getCategory(int id);
     Category getCategory(int id);
+    List<Category> getAllCategorys();
 }

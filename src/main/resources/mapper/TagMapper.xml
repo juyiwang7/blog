@@ -20,6 +20,15 @@
             <result property="update_time" column="update_time"/>
         </collection>
     </resultMap>
+<!--    在article_tag表中给文章添加tag信息，可以先删除原有标签-->
+    <insert id="addArticleTags" parameterType="Article">
+            insert into article_tag(article_id,tag_id,user_id)
+            values
+        <foreach item="item" index="index" collection="tag" separator=",">
+            (#{article_id},#{item.tag_id},#{user.user_id})
+        </foreach>
+
+    </insert>
 
     <select id="listTag" resultMap="ArticleTagMap">
         select t.*,a.* from article_tag at
@@ -27,12 +36,15 @@
         inner join tag t on at.tag_id = t.tag_id
     </select>
 
-    <!--    获取指定tag和其下的文章（废弃）-->
-
-<!--    <select id="getTag" parameterType="int" resultMap="ArticleTagMap">-->
-<!--        select t.*,a.* from article_tag at-->
-<!--        inner join article a on at.article_id = a.article_id-->
-<!--        inner join tag t on at.tag_id = t.tag_id-->
-<!--        where t.tag_id = #{id}-->
-<!--    </select>-->
+    <!--    获取指定tag的信息和文章，查看所有标签的页面会用到-->
+    <select id="getTag" parameterType="int" resultMap="ArticleTagMap">
+        select t.*,a.* from article_tag at
+        inner join article a on at.article_id = a.article_id
+        inner join tag t on at.tag_id = t.tag_id
+        where t.tag_id = #{id}
+    </select>
+<!--    获取所有tag信息-->
+    <select id="getAllTags" resultType="com.hdu.blog.entity.Tag">
+        select * from tag
+    </select>
 </mapper>

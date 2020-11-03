@@ -21,6 +21,13 @@ public class CategoryController {
     private CategoryService categoryService;
 
 
+    @GetMapping
+    @ApiOperation(value = "查看所有分类的基本信息")
+    public ResultVO getAllCategorys(){
+        List<Category> allCategorys = categoryService.getAllCategorys();
+        return ResultVO.ok(allCategorys);
+    }
+
     @GetMapping("/detail")
     @ApiOperation(value = "查看所有分类")
     public ResultVO listCategory(){

@@ -10,4 +10,6 @@ public interface CategoryMapper {
     List<Category> listCategory();
 
     Category getCategory(int id);
+
+    List<Category> getAllCategorys();//得到Category基本信息
 }

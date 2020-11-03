@@ -1,5 +1,6 @@
 package com.hdu.blog.serviceimpl;
 
+import com.hdu.blog.entity.Article;
 import com.hdu.blog.entity.Tag;
 import com.hdu.blog.mapper.TagMapper;
 import com.hdu.blog.service.TagService;
@@ -21,5 +22,15 @@ public class TagServiceImpl implements TagService {
     @Override
     public Tag getTag(int id) {
         return tagMapper.getTag(id);
+    }
+
+    @Override
+    public List<Tag> getAllTags() {
+        return tagMapper.getAllTags();
+    }
+
+    @Override
+    public void addArtcleTags(Article article) {
+        tagMapper.addArticleTags(article);
     }
 }

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hdu.blog.mapper.ArticleMapper">
-<!--    联合三表查询，查询category_name和tag_name-->
+<!--    新增文章，在article表中插入数据-->
+    <insert id="publishArticle" useGeneratedKeys="true" keyProperty="article_id" parameterType="Article">
+        insert into article (article_title,article_content,category_id,user_id)
+        values (#{article_title},#{article_content},#{category.category_id},#{user.user_id})
+    </insert>
+    <!--    联合三表查询，查询category_name和tag_name-->
 <!--    获取全部文章-->
     <select id="listArticle" resultMap="articleMap">
         select article.*,c.*,t.* from article
@@ -9,6 +14,14 @@
         inner join article_tag a on article.article_id = a.article_id
         inner join tag t on a.tag_id = t.tag_id
         order by article_time desc
+  </select>
+<!--    获取全部文章 按点击率排序-->
+    <select id="listHotArticle" resultMap="articleMap">
+        select article.*,c.*,t.* from article
+        inner join category c on article.category_id = c.category_id
+        inner join article_tag a on article.article_id = a.article_id
+        inner join tag t on a.tag_id = t.tag_id
+        order by article_viewcount desc
   </select>
 
 <!--    获取指定文章-->

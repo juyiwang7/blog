@@ -24,4 +24,9 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryMapper.getCategory(id);
     }
 
+    @Override
+    public List<Category> getAllCategorys() {
+        return categoryMapper.getAllCategorys();
+    }
+
 }
