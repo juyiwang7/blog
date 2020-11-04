@@ -13,4 +13,5 @@ public interface ArticleMapper {
     List<Article> getArticleByCategory(int id);
     List<Article> getArticleByTag(int id);
     void publishArticle(Article article);
+    void deleteArticleCategory(int category_id);
 }

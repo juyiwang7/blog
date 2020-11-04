@@ -34,8 +34,29 @@
         inner join article a on c.category_id = a.category_id
         where c.category_id = #{id}
     </select>
+
 <!--    获取所有分类的基本信息-->
     <select id="getAllCategorys" resultType="com.hdu.blog.entity.Category">
         select * from category
     </select>
+
+<!--    增加一个类别-->
+    <insert id="addCategory" useGeneratedKeys="true"  keyProperty="category_id" parameterType="Category">
+        insert into category (category_name,category_description,user_id)
+        values (#{category_name},#{category_description},#{user.user_id})
+    </insert>
+
+<!--    修改一个类别的名称或描述-->
+    <update id="updateCategory" parameterType="Category">
+        update category set
+        category_name = #{category_name},
+        category_description = #{category_description},
+        user_id = #{user.user_id}
+        where category_id = #{id}
+    </update>
+
+<!--    删除一个类别-->
+    <delete id="deleteCategory" parameterType="int">
+        delete from category where category_id = #{id}
+    </delete>
 </mapper>

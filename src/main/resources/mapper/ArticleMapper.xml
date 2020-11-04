@@ -33,7 +33,10 @@
         where article.article_id = #{id}
     </select>
 
-
+<!--    将文章的分类更新为”无“，因为分类已经被删除-->
+    <update id="deleteArticleCategory" parameterType="int">
+        update article set category_id = 10 where category_id = #{category_id}
+    </update>
 <!--    获取指定分类下的文章-->
     <select id="getArticleByCategory" resultMap="articleMap">
         select article.*,c.*,t.* from article
@@ -42,6 +45,8 @@
         inner join tag t on a.tag_id = t.tag_id
         where c.category_id = #{id}
     </select>
+
+
 
 <!--    获取指定tag下的文章-->
     <select id="getArticleByTag" resultMap="articleMap">

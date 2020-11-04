@@ -29,4 +29,20 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryMapper.getAllCategorys();
     }
 
+    @Override
+    public void addCategory(Category category) {
+       categoryMapper.addCategory(category);
+    }
+
+    @Override
+    public void updateCategory(Category category) {
+        categoryMapper.updateCategory(category);
+    }
+
+    @Override
+    public void deleteCategory(int id) {
+        categoryMapper.deleteCategory(id);
+    }
+
+
 }

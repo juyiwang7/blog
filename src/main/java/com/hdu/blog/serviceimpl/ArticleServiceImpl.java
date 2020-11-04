@@ -38,4 +38,10 @@ public class ArticleServiceImpl implements ArticleService {
     public void publishArticle(Article article) {
         articleMapper.publishArticle(article);
     }
+
+    @Override
+    public void deleteArticleCategory(int category_id) {
+        articleMapper.deleteArticleCategory(category_id);
+    }
+
 }

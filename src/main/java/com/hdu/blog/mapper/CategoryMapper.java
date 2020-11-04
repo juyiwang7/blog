@@ -12,4 +12,10 @@ public interface CategoryMapper {
     Category getCategory(int id);
 
     List<Category> getAllCategorys();//得到Category基本信息
+
+    void addCategory(Category category);
+
+    void updateCategory(Category category);
+
+    void deleteCategory(int id);
 }
