@@ -44,4 +44,9 @@ public class ArticleServiceImpl implements ArticleService {
         articleMapper.deleteArticleCategory(category_id);
     }
 
+    @Override
+    public void addCommentCountAndViewCount(int articleId) {
+        articleMapper.addCommentCountAndViewCount(articleId);
+    }
+
 }

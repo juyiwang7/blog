@@ -11,6 +11,6 @@ import java.util.List;
  */
 @Mapper
 public interface CommentMapper {
-    List<Comment> listComment();
-    Comment getComment(int commentId);
+    List<Comment> getCommentByArticle(int articleId);
+    void publishComment(Comment comment);
 }

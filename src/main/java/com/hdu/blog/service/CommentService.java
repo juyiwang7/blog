@@ -10,7 +10,6 @@ import java.util.List;
  * @create 2020-10-28 19:47
  */
 public interface CommentService {
-
-    List<Comment> listComment();
-    Comment getComment(int commentId);
+    List<Comment> getCommentByArticle(int articleId);
+    void publishComment(Comment comment);
 }

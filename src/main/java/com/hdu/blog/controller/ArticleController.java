@@ -88,6 +88,7 @@ public class ArticleController {
         user.setUser_id(1);
         article.setUser(user);
         articleService.publishArticle(article);
+
         Integer id = article.getArticle_id();
         article.setArticle_id(id);
         tagService.addArtcleTags(article);

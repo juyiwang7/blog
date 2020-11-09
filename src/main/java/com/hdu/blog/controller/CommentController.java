@@ -3,8 +3,10 @@ package com.hdu.blog.controller;
 import com.hdu.blog.core.domain.ResultVO;
 import com.hdu.blog.entity.Article;
 import com.hdu.blog.entity.Comment;
+import com.hdu.blog.entity.User;
 import com.hdu.blog.service.ArticleService;
 import com.hdu.blog.service.CommentService;
+import com.hdu.blog.service.TagService;
 import com.hdu.blog.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,28 +26,27 @@ public class CommentController {
 
     @Autowired
     CommentService commentService;
+    @Autowired
+    ArticleService articleService;
 
     @CrossOrigin
-    @ApiOperation(value = "获取所有评论")
-    @GetMapping
-    public ResultVO listComment(){
-        List<Comment> listComment = commentService.listComment();
-
-        return ResultVO.ok(listComment);
+    @GetMapping("/article/{article_id}")
+    @ApiOperation(value ="根据文章ID查看评论")
+    public ResultVO getComment(@PathVariable("article_id") int id){
+        List<Comment> comment= commentService.getCommentByArticle(id);
+        return ResultVO.ok(comment);
     }
 
-    @CrossOrigin
-    @ApiOperation(value = "获取最新评论")
-    @GetMapping("/new")
-    public ResultVO listNewComment(){
-        return listComment();
-    }
+    @PostMapping("/create/change")
+    @ApiOperation("新增评论")
+    public ResultVO publishComment(@RequestBody Comment comment){
+        User user = new User();
+        user.setUser_id(1);
+        comment.setUser(user);
+        commentService.publishComment(comment);
 
-
-    @GetMapping("/view/{comment_id}")
-    @ApiOperation("查看指定评论")
-    public ResultVO getComment(@PathVariable("comment_id") int id){
-        Comment comment= commentService.getComment(id);
+        articleService.addCommentCountAndViewCount(comment.getArticle().getArticle_id());
+        //System.out.println(comment.getArticle().getArticle_id());
         return ResultVO.ok(comment);
     }
 }

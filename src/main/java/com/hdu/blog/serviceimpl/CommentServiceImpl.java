@@ -21,14 +21,13 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     CommentMapper commentMapper;
 
-
     @Override
-    public List<Comment> listComment() {
-        return commentMapper.listComment();
+    public  List<Comment> getCommentByArticle(int articleId) {
+        return commentMapper.getCommentByArticle(articleId);
     }
 
     @Override
-    public Comment getComment(int commentId) {
-        return commentMapper.getComment(commentId);
+    public void publishComment(Comment comment) {
+        commentMapper.publishComment(comment);
     }
 }
