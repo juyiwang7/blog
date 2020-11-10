@@ -26,8 +26,6 @@ public class CommentController {
 
     @Autowired
     CommentService commentService;
-    @Autowired
-    ArticleService articleService;
 
     @CrossOrigin
     @GetMapping("/article/{article_id}")
@@ -44,9 +42,6 @@ public class CommentController {
         user.setUser_id(1);
         comment.setUser(user);
         commentService.publishComment(comment);
-
-        articleService.addCommentCountAndViewCount(comment.getArticle().getArticle_id());
-        //System.out.println(comment.getArticle().getArticle_id());
         return ResultVO.ok(comment);
     }
 }

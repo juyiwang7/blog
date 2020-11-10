@@ -59,13 +59,6 @@
         )
     </select>
 
-<!--    评论增加时，相应地在文章表中增加评论数量和浏览数量-->
-    <update id="addCommentCountAndViewCount" parameterType="int">
-        update article set article_viewcount=article_viewcount+1,
-        article_commentcount=article_commentcount+1
-        where article_id=#{article_id}
-    </update>
-
 
     <resultMap id="articleMap" type="Article">
         <result property="article_id" column="article_id" />
