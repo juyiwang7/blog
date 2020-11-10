@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hdu.blog.mapper.ArticleMapper">
-<!--    新增文章，在article表中插入数据-->
+    <!--    新增文章，在article表中插入数据-->
     <insert id="publishArticle" useGeneratedKeys="true" keyProperty="article_id" parameterType="Article">
         insert into article (article_title,article_content,category_id,user_id)
         values (#{article_title},#{article_content},#{category.category_id},#{user.user_id})
     </insert>
     <!--    联合三表查询，查询category_name和tag_name-->
-<!--    获取全部文章-->
+    <!--    获取全部文章-->
     <select id="listArticle" resultMap="articleMap">
         select article.*,c.*,t.* from article
         inner join category c on article.category_id = c.category_id
@@ -15,7 +15,7 @@
         inner join tag t on a.tag_id = t.tag_id
         order by article_time desc
   </select>
-<!--    获取全部文章 按点击率排序-->
+    <!--    获取全部文章 按点击率排序-->
     <select id="listHotArticle" resultMap="articleMap">
         select article.*,c.*,t.* from article
         inner join category c on article.category_id = c.category_id
@@ -24,7 +24,7 @@
         order by article_viewcount desc
   </select>
 
-<!--    获取指定文章-->
+    <!--    获取指定文章-->
     <select id="getArticle" resultMap="articleMap">
         select article.*,c.*,t.* from article
         inner join category c on article.category_id = c.category_id
@@ -33,11 +33,11 @@
         where article.article_id = #{id}
     </select>
 
-<!--    将文章的分类更新为”无“，因为分类已经被删除-->
+    <!--    将文章的分类更新为”无“，因为分类已经被删除-->
     <update id="deleteArticleCategory" parameterType="int">
         update article set category_id = 10 where category_id = #{category_id}
     </update>
-<!--    获取指定分类下的文章-->
+    <!--    获取指定分类下的文章-->
     <select id="getArticleByCategory" resultMap="articleMap">
         select article.*,c.*,t.* from article
         inner join category c on article.category_id = c.category_id
@@ -47,7 +47,7 @@
     </select>
 
 
-<!--    获取指定tag下的文章-->
+    <!--    获取指定tag下的文章-->
     <select id="getArticleByTag" resultMap="articleMap">
         select article.*,c.*,t.* from article
         inner join category c on article.category_id = c.category_id
@@ -69,17 +69,17 @@
         <result property="article_commentcount" column="article_commentcount"/>
         <result property="create_time" column="create_time"/>
         <result property="update_time" column="update_time"/>
-<!--        User Category List<Tag> 用对象<association> 集合<collection>-->
-<!--        用户还不实现-->
-<!--        <association property="user" javaType="User">-->
-<!--            <result property="user_id" column="user_id"/>-->
-<!--            <result property="username" column="username"/>-->
-<!--            <result property="password" column="password"/>-->
-<!--            <result property="email" column="email"/>-->
-<!--            <result property="phone" column="phone"/>-->
-<!--            <result property="create_time" column="create_time"/>-->
-<!--            <result property="update_time" column="update_time"/>-->
-<!--        </association>-->
+        <!--        User Category List<Tag> 用对象<association> 集合<collection>-->
+        <!--        用户还不实现-->
+        <!--        <association property="user" javaType="User">-->
+        <!--            <result property="user_id" column="user_id"/>-->
+        <!--            <result property="username" column="username"/>-->
+        <!--            <result property="password" column="password"/>-->
+        <!--            <result property="email" column="email"/>-->
+        <!--            <result property="phone" column="phone"/>-->
+        <!--            <result property="create_time" column="create_time"/>-->
+        <!--            <result property="update_time" column="update_time"/>-->
+        <!--        </association>-->
         <association property="category" javaType="Category">
             <result property="category_id" column="category_id"/>
             <result property="category_name" column="category_name"/>
@@ -87,7 +87,7 @@
             <result property="create_time" column="create_time"/>
             <result property="update_time" column="update_time"/>
         </association>
-<!--        获取每个article的tag列表SQL怎么写，效率。还是单独写一个根据article_id查tag的SQL-->
+        <!--        获取每个article的tag列表SQL怎么写，效率。还是单独写一个根据article_id查tag的SQL-->
         <collection property="tag" ofType="Tag">
             <result property="tag_id" column="tag_id"/>
             <result property="tag_name" column="tag_name"/>
