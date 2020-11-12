@@ -39,15 +39,11 @@ public class ArticleServiceImpl implements ArticleService {
         articleMapper.publishArticle(article);
     }
 
-//    @Override
-//    public void deleteArticleCategory(int category_id) {
-//        articleMapper.deleteArticleCategory(category_id);
-//    }
-
     @Override
-    public void addCommentCountAndViewCount(int articleId) {
-
+    public void deleteArticleCategory(int category_id) {
+        articleMapper.deleteArticleCategory(category_id);
     }
+
 
 
 }
