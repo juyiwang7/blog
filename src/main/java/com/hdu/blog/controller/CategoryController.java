@@ -73,7 +73,7 @@ public class CategoryController {
     @ApiOperation(value="删除分类")
     public ResultVO deleteCategory(int id){
         categoryService.deleteCategory(id);
-        articleService.deleteArticleCategory(id);
+//        articleService.deleteArticleCategory(id);
         return ResultVO.ok("删除类别："+id);
     }
 }

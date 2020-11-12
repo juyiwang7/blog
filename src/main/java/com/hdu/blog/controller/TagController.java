@@ -3,13 +3,12 @@ package com.hdu.blog.controller;
 import com.hdu.blog.core.domain.ResultVO;
 import com.hdu.blog.entity.Category;
 import com.hdu.blog.entity.Tag;
+import com.hdu.blog.entity.User;
 import com.hdu.blog.service.TagService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,5 +37,38 @@ public class TagController {
     public ResultVO getTag(@PathVariable("id") int id){
         Tag tag = tagService.getTag(id);
         return ResultVO.ok(tag);
+    }
+
+    @PostMapping("/add")
+    @ApiOperation(value="增加Tag")
+    public ResultVO addTag(@RequestBody Tag tag){
+        User user = new User();
+        user.setUser_id(1);
+        tag.setUser_id(user.getUser_id());
+        tagService.addTag(tag);
+        return ResultVO.ok(tag);
+    }
+
+    @GetMapping("/toUpdateTag/{id}")
+    @ApiOperation("拿到要修改的Tag信息，显示在前端")
+    public ResultVO toUpdateTag(@PathVariable("id")int id){
+        Tag tag = tagService.getTag(id);
+        return ResultVO.ok(tag);
+    }
+
+    @PostMapping("/updateTag")
+    @ApiOperation("修改Tag")
+    public ResultVO updateTag(@RequestBody Tag tag){
+        tagService.updateTag(tag);
+        return ResultVO.ok(tag);
+    }
+
+    @PostMapping("deleteTag")
+    @ApiOperation("删除Tag")
+    public ResultVO deleteTag(int id){
+        tagService.deleteTaginTag(id);
+        tagService.deleteTaginArticle_Tag(id);
+
+        return ResultVO.ok("删除tag的id："+id);
     }
 }
