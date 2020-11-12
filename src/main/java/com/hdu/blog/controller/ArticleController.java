@@ -8,7 +8,7 @@ import com.hdu.blog.service.ArticleService;
 import com.hdu.blog.service.TagService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.shiro.authz.annotation.RequiresRoles;
+//import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -92,7 +92,7 @@ public class ArticleController {
     @PostMapping("/publish")
     @ApiOperation("新增文章")
     @LogAnnotation(module = "文章",description = "新增文章",type = "新增")
-    @RequiresRoles("admin")
+//    @RequiresRoles("admin")
     public ResultVO publishArticle(@RequestBody Article article){
         User user = new User();
         user.setUser_id(1);
