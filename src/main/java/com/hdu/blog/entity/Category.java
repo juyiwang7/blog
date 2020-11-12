@@ -30,4 +30,8 @@ public class Category {
 
     //数据库中没有的字段，这里的含义是每个类别下的文章
     private List<Article> articles;
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

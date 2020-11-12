@@ -2,10 +2,12 @@ package com.hdu.blog.mapper;
 
 import com.hdu.blog.entity.Article;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
+@Repository
 public interface ArticleMapper {
     List<Article> listArticle();
     List<Article> listHotArticle();
