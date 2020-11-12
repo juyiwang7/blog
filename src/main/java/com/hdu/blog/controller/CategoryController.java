@@ -80,7 +80,7 @@ public class CategoryController {
     @LogAnnotation(module = "类别",description = "删除分类",type = "删除")
     public ResultVO deleteCategory(int id){
         categoryService.deleteCategory(id);
-        articleService.deleteArticleCategory(id);
+//        articleService.deleteArticleCategory(id);
         return ResultVO.ok("删除类别："+id);
     }
 }

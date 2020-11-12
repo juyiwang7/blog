@@ -10,39 +10,39 @@
     <!--    获取全部文章-->
     <select id="listArticle" resultMap="articleMap">
         select article.*,c.*,t.* from article
-        inner join category c on article.category_id = c.category_id
-        inner join article_tag a on article.article_id = a.article_id
-        inner join tag t on a.tag_id = t.tag_id
+        left join category c on article.category_id = c.category_id
+        left join article_tag a on article.article_id = a.article_id
+        left join tag t on a.tag_id = t.tag_id
         order by article_time desc
   </select>
     <!--    获取全部文章 按点击率排序-->
     <select id="listHotArticle" resultMap="articleMap">
         select article.*,c.*,t.* from article
-        inner join category c on article.category_id = c.category_id
-        inner join article_tag a on article.article_id = a.article_id
-        inner join tag t on a.tag_id = t.tag_id
+        left join category c on article.category_id = c.category_id
+        left join article_tag a on article.article_id = a.article_id
+        left join tag t on a.tag_id = t.tag_id
         order by article_viewcount desc
   </select>
 
     <!--    获取指定文章-->
     <select id="getArticle" resultMap="articleMap">
         select article.*,c.*,t.* from article
-        inner join category c on article.category_id = c.category_id
-        inner join article_tag a on article.article_id = a.article_id
-        inner join tag t on a.tag_id = t.tag_id
+        left join category c on article.category_id = c.category_id
+        left join article_tag a on article.article_id = a.article_id
+        left join tag t on a.tag_id = t.tag_id
         where article.article_id = #{id}
     </select>
 
-    <!--    将文章的分类更新为”无“，因为分类已经被删除-->
-    <update id="deleteArticleCategory" parameterType="int">
-        update article set category_id = 10 where category_id = #{category_id}
-    </update>
+<!--    &lt;!&ndash;    将文章的分类更新为”无“，因为分类已经被删除&ndash;&gt;-->
+<!--    <update id="deleteArticleCategory" parameterType="int">-->
+<!--        update article set category_id = 10 where category_id = #{category_id}-->
+<!--    </update>-->
     <!--    获取指定分类下的文章-->
     <select id="getArticleByCategory" resultMap="articleMap">
         select article.*,c.*,t.* from article
-        inner join category c on article.category_id = c.category_id
-        inner join article_tag a on article.article_id = a.article_id
-        inner join tag t on a.tag_id = t.tag_id
+        left join category c on article.category_id = c.category_id
+        left join article_tag a on article.article_id = a.article_id
+        left join tag t on a.tag_id = t.tag_id
         where c.category_id = #{id}
     </select>
 
@@ -50,9 +50,9 @@
     <!--    获取指定tag下的文章-->
     <select id="getArticleByTag" resultMap="articleMap">
         select article.*,c.*,t.* from article
-        inner join category c on article.category_id = c.category_id
-        inner join article_tag a on article.article_id = a.article_id
-        inner join tag t on a.tag_id = t.tag_id
+        left join category c on article.category_id = c.category_id
+        left join article_tag a on article.article_id = a.article_id
+        left join tag t on a.tag_id = t.tag_id
         where article.article_id in (
             select article_id from article_tag
             where tag_id = #{id}

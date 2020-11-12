@@ -33,4 +33,24 @@ public class TagServiceImpl implements TagService {
     public void addArtcleTags(Article article) {
         tagMapper.addArticleTags(article);
     }
+
+    @Override
+    public void addTag(Tag tag) {
+        tagMapper.addTag(tag);
+    }
+
+    @Override
+    public void updateTag(Tag tag) {
+        tagMapper.updateTag(tag);
+    }
+
+    @Override
+    public void deleteTaginTag(int id) {
+        tagMapper.deleteTaginTag(id);
+    }
+
+    @Override
+    public void deleteTaginArticle_Tag(int id) {
+        tagMapper.deleteTaginArticle_Tag(id);
+    }
 }

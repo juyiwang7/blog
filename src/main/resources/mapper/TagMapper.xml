@@ -47,4 +47,24 @@
     <select id="getAllTags" resultType="com.hdu.blog.entity.Tag">
         select * from tag
     </select>
+
+<!--    增加一个Tag-->
+    <insert id="addTag" parameterType="Tag" >
+        insert into Tag (tag_id,tag_name,user_id)
+        values #{tag_id},#{tag_name},#{user_id}
+    </insert>
+
+<!--    修改一个Tag-->
+    <update id="updateTag" parameterType="Tag">
+        update Tag set tag_name = #{tag_name} where tag_id = #{tag_id}
+    </update>
+
+<!--    删除Tag表中的tag-->
+    <delete id="deleteTaginTag" parameterType="int">
+        delete from Tag where tag_id = #{id}
+    </delete>
+<!--    删除aritcle_tag表中tag-->
+    <delete id="deleteTaginArticle_tag" parameterType="int">
+        delete from article_tag where tag_id = #{id}
+    </delete>
 </mapper>
