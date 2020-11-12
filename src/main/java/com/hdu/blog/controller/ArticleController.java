@@ -1,5 +1,6 @@
 package com.hdu.blog.controller;
 
+import com.hdu.blog.core.annotation.LogAnnotation;
 import com.hdu.blog.core.domain.ResultVO;
 import com.hdu.blog.entity.Article;
 import com.hdu.blog.entity.User;
@@ -28,6 +29,7 @@ public class ArticleController {
 
     @CrossOrigin
     @ApiOperation(value = "获取所有文章")
+    @LogAnnotation(module = "文章",description = "获取所有文章",type = "查询")
     @GetMapping
     public ResultVO listArticle(){
         List<Article> listArticle = articleService.listArticle();//要有类别标签的名称，而不是直接差Article表
@@ -37,6 +39,7 @@ public class ArticleController {
 
     @CrossOrigin
     @ApiOperation(value = "获取最新文章")
+    @LogAnnotation(module = "文章",description = "获取最新文章",type = "查询")
     @GetMapping("/new")
     public ResultVO listNewArticle(){
         List<Article> listArticle = articleService.listArticle();
@@ -49,6 +52,7 @@ public class ArticleController {
 
     @CrossOrigin
     @ApiOperation(value = "获取点击量最高文章")
+    @LogAnnotation(module = "文章",description = "获取点击量最高文章",type = "查询")
     @GetMapping("/hot")
     public ResultVO listHotArticle(){
         List<Article> articles = articleService.listHotArticle();
@@ -62,6 +66,7 @@ public class ArticleController {
 
     @GetMapping("/view/{article_id}")
     @ApiOperation("查看指定文章")
+    @LogAnnotation(module = "文章",description = "查看指定文章",type = "查询")
     public ResultVO getArticle(@PathVariable("article_id") int id){
         Article article = articleService.getArticle(id);
         return ResultVO.ok(article);
@@ -69,6 +74,7 @@ public class ArticleController {
 
     @GetMapping("/category/{id}")
     @ApiOperation("查看指定分类下的文章")
+    @LogAnnotation(module = "文章",description = "查看指定分类下的文章",type = "查询")
     public ResultVO getArticlesByCategory(@PathVariable("id") int id){
         List<Article> articles = articleService.getArticleByCategory(id);
         return ResultVO.ok(articles);
@@ -76,6 +82,7 @@ public class ArticleController {
 
     @GetMapping("/tag/{id}")
     @ApiOperation("查看指定tag下的文章")
+    @LogAnnotation(module = "文章",description = "查看指定tag下的文章",type = "查询")
     public ResultVO getArticlesByTag(@PathVariable("id") int id){
         List<Article> articles = articleService.getArticleByTag(id);
         return ResultVO.ok(articles);
@@ -83,6 +90,7 @@ public class ArticleController {
 
     @PostMapping("/publish")
     @ApiOperation("新增文章")
+    @LogAnnotation(module = "文章",description = "新增文章",type = "新增")
     public ResultVO publishArticle(@RequestBody Article article){
         User user = new User();
         user.setUser_id(1);

@@ -1,5 +1,6 @@
 package com.hdu.blog.controller;
 
+import com.hdu.blog.core.annotation.LogAnnotation;
 import com.hdu.blog.core.domain.ResultVO;
 import com.hdu.blog.entity.Category;
 import com.hdu.blog.entity.User;
@@ -26,6 +27,7 @@ public class CategoryController {
 
     @GetMapping
     @ApiOperation(value = "查看所有分类的基本信息")
+    @LogAnnotation(module = "类别",description = "查看所有分类的基本信息",type = "查询")
     public ResultVO getAllCategorys(){
         List<Category> allCategorys = categoryService.getAllCategorys();
         return ResultVO.ok(allCategorys);
@@ -33,6 +35,7 @@ public class CategoryController {
 
     @GetMapping("/detail")
     @ApiOperation(value = "查看所有分类")
+    @LogAnnotation(module = "类别",description = "查看所有分类",type = "查询")
     public ResultVO listCategory(){
         List<Category> categories = categoryService.listCategory();
         return ResultVO.ok(categories);
@@ -40,6 +43,7 @@ public class CategoryController {
 
     @GetMapping("/detail/{id}")
     @ApiOperation(value = "查看指定分类")
+    @LogAnnotation(module = "类别",description = "查看指定分类",type = "查询")
     public ResultVO getCategory(@PathVariable("id") int id){
         Category cateogory = categoryService.getCategory(id);
         return ResultVO.ok(cateogory);
@@ -47,6 +51,7 @@ public class CategoryController {
 
     @PostMapping("/add")
     @ApiOperation(value="增加分类")
+    @LogAnnotation(module = "类别",description = "增加分类",type = "新增")
     public ResultVO addCategory(@RequestBody Category category){
         User user = new User();
         user.setUser_id(1);
@@ -64,6 +69,7 @@ public class CategoryController {
 
     @PostMapping("/update")
     @ApiOperation(value="修改分类")
+    @LogAnnotation(module = "类别",description = "修改分类",type = "修改")
     public ResultVO updateCategory(@RequestBody Category category){
         categoryService.updateCategory(category);
         return ResultVO.ok(category);
@@ -71,6 +77,7 @@ public class CategoryController {
 
     @PostMapping("/delete")
     @ApiOperation(value="删除分类")
+    @LogAnnotation(module = "类别",description = "删除分类",type = "删除")
     public ResultVO deleteCategory(int id){
         categoryService.deleteCategory(id);
         articleService.deleteArticleCategory(id);

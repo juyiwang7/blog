@@ -1,5 +1,6 @@
 package com.hdu.blog.controller;
 
+import com.hdu.blog.core.annotation.LogAnnotation;
 import com.hdu.blog.core.domain.ResultVO;
 import com.hdu.blog.entity.Category;
 import com.hdu.blog.entity.Tag;
@@ -21,6 +22,7 @@ public class TagController {
 
     @GetMapping
     @ApiOperation(value = "查看所有标签的基本信息")
+    @LogAnnotation(module = "标签",description = "查看所有标签的基本信息",type = "查询")
     public ResultVO getAllCategorys(){
         List<Tag> allTags = tagService.getAllTags();
         return ResultVO.ok(allTags);
@@ -28,6 +30,7 @@ public class TagController {
 
     @GetMapping("/detail")
     @ApiOperation(value = "查看所有标签")
+    @LogAnnotation(module = "标签",description = "查看所有标签",type = "查询")
     public ResultVO listTag(){
         List<Tag> tags = tagService.listTag();
         return ResultVO.ok(tags);
@@ -35,6 +38,7 @@ public class TagController {
 
     @GetMapping("/detail/{id}")
     @ApiOperation(value = "查看指定标签")
+    @LogAnnotation(module = "标签",description = "查看指定标签",type = "查询")
     public ResultVO getTag(@PathVariable("id") int id){
         Tag tag = tagService.getTag(id);
         return ResultVO.ok(tag);
