@@ -48,7 +48,7 @@ public class CommentController {
         comment.setUser(user);
         commentService.publishComment(comment);
         //TODO:未实现 评论和点击量无关
-        articleService.addCommentCountAndViewCount(comment.getArticle().getArticle_id());
+        articleService.addCommentCount(comment.getArticle().getArticle_id());
         //System.out.println(comment.getArticle().getArticle_id());
         return ResultVO.ok(comment);
     }

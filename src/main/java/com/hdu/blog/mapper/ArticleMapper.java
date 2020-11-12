@@ -17,5 +17,5 @@ public interface ArticleMapper {
     void publishArticle(Article article);
     void deleteArticleCategory(int category_id);
     //TODO:未实现
-    void addCommentCountAndViewCount(int articleId);
+    void addCommentCount(int articleId);
 }
