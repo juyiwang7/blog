@@ -27,8 +27,6 @@ public class CommentController {
 
     @Autowired
     CommentService commentService;
-    @Autowired
-    ArticleService articleService;
 
     @CrossOrigin
     @GetMapping("/article/{article_id}")
@@ -46,10 +44,13 @@ public class CommentController {
         User user = new User();
         user.setUser_id(1);
         comment.setUser(user);
-        commentService.publishComment(comment);
-        //TODO:未实现 评论和点击量无关
-        articleService.addCommentCount(comment.getArticle().getArticle_id());
-        //System.out.println(comment.getArticle().getArticle_id());
+        try{
+            commentService.publishComment(comment);
+        }catch (Exception e){
+            System.out.println(e);
+            return ResultVO.error("评论失败");
+        }
+
         return ResultVO.ok(comment);
     }
 }

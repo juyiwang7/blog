@@ -7,6 +7,7 @@ import com.hdu.blog.mapper.TagMapper;
 import com.hdu.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,6 +16,8 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
     ArticleMapper articleMapper;
+    @Autowired
+    TagMapper tagMapper;
 
     @Override
     public List<Article> listArticle() {
@@ -35,15 +38,12 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> getArticleByTag(int id){return articleMapper.getArticleByTag(id);}
 
     @Override
+    @Transactional //事务
     public void publishArticle(Article article) {
         articleMapper.publishArticle(article);
+        Integer id = article.getArticle_id();
+        article.setArticle_id(id);
+        tagMapper.addArticleTags(article);
     }
-
-//    @Override
-//    public void deleteArticleCategory(int category_id) {
-//        articleMapper.deleteArticleCategory(category_id);
-//    }
-
-
 
 }

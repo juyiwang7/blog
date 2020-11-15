@@ -15,7 +15,7 @@ public interface ArticleMapper {
     List<Article> getArticleByCategory(int id);
     List<Article> getArticleByTag(int id);
     void publishArticle(Article article);
-    void deleteArticleCategory(int category_id);
-    //TODO:未实现
-    void addCommentCount(int articleId);
+    //TODO:未实现？
+//    void deleteArticleCategory(int category_id);
+    void updateCommentCount(int articleId);
 }

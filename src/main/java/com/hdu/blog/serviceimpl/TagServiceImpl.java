@@ -30,11 +30,6 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public void addArtcleTags(Article article) {
-        tagMapper.addArticleTags(article);
-    }
-
-    @Override
     public void addTag(Tag tag) {
         tagMapper.addTag(tag);
     }

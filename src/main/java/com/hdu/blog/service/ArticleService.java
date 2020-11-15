@@ -12,5 +12,4 @@ public interface ArticleService {
     List<Article> getArticleByTag(int id);
     void publishArticle(Article article);
 //    void deleteArticleCategory(int category_id);
-    void addCommentCount(int articleId);
 }

@@ -8,6 +8,7 @@ import com.hdu.blog.service.ArticleService;
 import com.hdu.blog.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +21,8 @@ public class CommentServiceImpl implements CommentService {
 
     @Autowired
     CommentMapper commentMapper;
+    @Autowired
+    ArticleMapper articleMapper;
 
     @Override
     public  List<Comment> getCommentByArticle(int articleId) {
@@ -27,7 +30,9 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    @Transactional //事务
     public void publishComment(Comment comment) {
         commentMapper.publishComment(comment);
+        articleMapper.updateCommentCount(comment.getArticle().getArticle_id());
     }
 }

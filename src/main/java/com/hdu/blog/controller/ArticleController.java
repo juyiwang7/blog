@@ -97,11 +97,11 @@ public class ArticleController {
         User user = new User();
         user.setUser_id(1);
         article.setUser(user);
-        articleService.publishArticle(article);
-
-        Integer id = article.getArticle_id();
-        article.setArticle_id(id);
-        tagService.addArtcleTags(article);
+        try{
+            articleService.publishArticle(article);
+        }catch (Exception e) {
+            return ResultVO.error("文章发布失败");
+        }
         return ResultVO.ok(article);
     }
 
